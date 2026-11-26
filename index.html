@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natnaree Yuttachit — UX/UI Designer & IoT / Web Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="antialiased selection:bg-sapphire/20 selection:text-cobalt">
+
+  <!-- Gentle Top Scroll Progress Bar -->
+  <div
+    id="scrollProgress"
+    aria-hidden="true"
+    class="fixed top-0 left-0 h-[2.5px] w-full z-[60] origin-left scale-x-0 bg-gradient-to-r from-cobalt via-sapphire to-iceblue pointer-events-none transition-transform duration-150 ease-out"
+  ></div>
+
+  <!-- Toast Notification -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 right-5 z-[90] translate-y-20 opacity-0 pointer-events-none transition-all duration-400 ease-[cubic-bezier(0.34,1.32,0.64,1)] flex items-center gap-2.5 bg-carbon text-white border border-electric/40 px-4 py-3 rounded-full shadow-2xl text-sm font-medium"
+  >
+    <span class="w-2 h-2 rounded-full bg-electric animate-pulse"></span>
+    <span id="toastMessage">Copied to clipboard</span>
+  </div>
+
+  <!-- Sticky Navigation Bar -->
+  <header class="sticky top-0 z-50 bg-carbon/80 backdrop-blur-xl border-b border-white/10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <!-- Brand Identity -->
+      <a href="#top" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-electric rounded-2xl tactile-btn">
+        <div class="w-9 h-9 rounded-[14px] bg-gradient-to-br from-iceblue via-electric to-cobalt p-[1px] shadow-cobaltGlow group-hover:rotate-3 transition-transform duration-300">
+          <div class="w-full h-full bg-carbon rounded-[13px] flex items-center justify-center font-art italic font-semibold text-sm text-white">
+            NY
+          </div>
+        </div>
+        <div class="leading-tight">
+          <span class="font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-iceblue transition-colors">
+            Natnaree Yuttachit
+          </span>
+          <span class="hidden sm:block text-[11px] text-slate-400 font-normal">
+            UX/UI &amp; IoT / Web Studio
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#projects" data-i18n="nav_projects" class="nav-link-fluid hover:text-white py-1">Projects</a>
+        <a href="#experience" data-i18n="nav_experience" class="nav-link-fluid hover:text-white py-1">Experience</a>
+        <a href="#skills" data-i18n="nav_skills" class="nav-link-fluid hover:text-white py-1">Skills &amp; Education</a>
+        <a href="#contact" data-i18n="nav_contact" class="nav-link-fluid hover:text-white py-1">Contact</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <button
+          id="langToggle"
+          type="button"
+          onclick="toggleLanguage()"
+          aria-label="Switch language between English and Thai"
+          class="tactile-btn px-3.5 py-1.5 rounded-full text-xs font-semibold border border-white/15 bg-white/[0.04] hover:bg-white/[0.1] hover:border-electric/50 text-slate-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-electric"
+        >
+          <span data-i18n="lang_switch">TH / EN</span>
+        </button>
+
+        <button
+          type="button"
+          onclick="openResumeModal()"
+          class="tactile-btn hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-sapphire hover:bg-electric hover:-translate-y-0.5 text-white shadow-cobaltGlow cursor-pointer focus:outline-none focus:ring-2 focus:ring-electric"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span data-i18n="btn_resume">View Resume</span>
+        </button>
+
+        <button
+          id="mobileMenuBtn"
+          type="button"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          class="tactile-btn md:hidden p-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] text-slate-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-electric"
+        >
+          <svg id="menuIconOpen" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menuIconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-obsidian/95 backdrop-blur-xl px-4 py-4 space-y-1.5">
+      <a href="#projects" onclick="closeMobileMenu()" data-i18n="nav_projects" class="block px-4 py-2.5 rounded-2xl text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-iceblue transition-colors">Projects</a>
+      <a href="#experience" onclick="closeMobileMenu()" data-i18n="nav_experience" class="block px-4 py-2.5 rounded-2xl text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-iceblue transition-colors">Experience</a>
+      <a href="#skills" onclick="closeMobileMenu()" data-i18n="nav_skills" class="block px-4 py-2.5 rounded-2xl text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-iceblue transition-colors">Skills &amp; Education</a>
+      <a href="#contact" onclick="closeMobileMenu()" data-i18n="nav_contact" class="block px-4 py-2.5 rounded-2xl text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-iceblue transition-colors">Contact</a>
+      <div class="pt-2">
+        <button
+          type="button"
+          onclick="closeMobileMenu(); openResumeModal();"
+          class="tactile-btn w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold bg-sapphire hover:bg-electric text-white cursor-pointer"
+        >
+          <span data-i18n="btn_resume">View Resume</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+ <!-- Hero Section -->
+  <section id="top" class="editorial-dark-bg relative text-white pt-16 pb-24 lg:pt-24 lg:pb-32 border-b border-white/10 overflow-hidden">
+    <div
+      data-parallax="0.08"
+      aria-hidden="true"
+      class="organic-blob-a pointer-events-none absolute -top-24 right-[8%] w-96 h-96 bg-gradient-to-br from-sapphire/25 via-electric/15 to-transparent blur-3xl"
+    ></div>
+    <div
+      data-parallax="-0.06"
+      aria-hidden="true"
+      class="organic-blob-b pointer-events-none absolute bottom-4 left-[5%] w-80 h-80 bg-gradient-to-tr from-cobalt/25 via-iceblue/10 to-transparent blur-3xl"
+    ></div>
+
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 360 360"
+      class="pointer-events-none hidden lg:block absolute -right-24 top-10 w-[360px] h-[360px] text-iceblue/15"
+    >
+      <circle cx="180" cy="180" r="142" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="5 9" />
+      <path d="M52 198 C98 110, 245 96, 304 176" fill="none" stroke="currentColor" stroke-width="1.2" />
+    </svg>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/15 text-xs sm:text-sm font-medium text-slate-200 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-iceblue shadow-[0_0_12px_#93C5FD]"></span>
+            <span data-i18n="hero_badge">UX/UI Designer • IoT &amp; Web Developer • KMITL</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-[3.65rem] font-extrabold tracking-[-0.03em] leading-[1.08]">
+            <span data-i18n="hero_title_1">Thoughtful interfaces for</span>
+            <span class="block font-art editorial-italic bg-gradient-to-r from-white via-iceblue to-electric bg-clip-text text-transparent mt-1.5" data-i18n="hero_title_2">
+              connected IoT, data &amp; AI systems.
+            </span>
+          </h1>
+
+          <p data-i18n="hero_summary" class="text-slate-300/90 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+            Third-year IoT & Information Engineering student seeking a UX/UI Design internship. Skilled in UX Research, UI Design, and Web Development, with prior internship experience and award-winning hackathon projects bridging user needs with technology.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3.5 pt-1">
+            <a
+              href="#projects"
+              class="tactile-btn inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm bg-sapphire hover:bg-electric hover:-translate-y-0.5 text-white shadow-cobaltGlow focus:outline-none focus:ring-2 focus:ring-iceblue"
+            >
+              <span data-i18n="hero_cta_primary">Explore Work</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+
+            <button
+              type="button"
+              onclick="openResumeModal()"
+              class="tactile-btn inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm bg-white/[0.05] hover:bg-white/[0.1] hover:-translate-y-0.5 border border-white/15 text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-electric"
+            >
+              <span data-i18n="hero_cta_secondary">Open CV Summary</span>
+            </button>
+          </div>
+
+          <div class="pt-5 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-xs sm:text-sm text-slate-400 border-t border-white/10">
+            <a
+              href="https://github.com/Natnaree3010"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-200"
+            >
+              <svg class="w-4 h-4 text-electric" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+              </svg>
+              <span>github.com/Natnaree3010</span>
+            </a>
+
+            <button
+              type="button"
+              onclick="copyText('natnaree.yuttachit1@gmail.com', 'Email copied!')"
+              class="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              <svg class="w-4 h-4 text-electric" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>natnaree.yuttachit1@gmail.com</span>
+            </button>
+
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-iceblue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span data-i18n="hero_location">Prawet, Bangkok</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="rounded-[34px] bg-obsidian/90 border border-white/15 p-6 sm:p-7 shadow-softFloat relative overflow-hidden">
+            <div class="organic-blob-b absolute -top-16 -right-16 w-64 h-64 bg-sapphire/25 blur-3xl pointer-events-none"></div>
+
+            <div class="relative flex items-center justify-center py-2">
+              <div
+                aria-hidden="true"
+                class="portrait-organic w-[280px] sm:w-[320px] aspect-[4/4.3] rounded-[48%_52%_42%_58%/55%_44%_56%_45%] bg-gradient-to-tr from-cobalt via-electric to-iceblue p-[3px] shadow-[0_0_55px_rgba(59,130,246,0.38)]"
+              >
+                <div class="w-full h-full rounded-[inherit] overflow-hidden bg-slate-200">
+                  <!-- เปลี่ยน src เป็นไฟล์รูปของคุณ เช่น assets/profile.jpg -->
+                  <img
+                    src="assets/profile6.jpg"
+                    alt="Natnaree Yuttachit"
+                    class="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mt-5 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
+              <div class="min-w-0">
+                <h2 class="font-bold text-lg sm:text-xl text-white leading-tight truncate">Natnaree Yuttachit</h2>
+                <p class="text-xs sm:text-sm text-iceblue/90 mt-0.5 truncate" data-i18n="card_role">
+                  UX/UI Designer • IoT &amp; Web Developer
+                </p>
+              </div>
+              <span class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-sapphire/25 text-iceblue border border-electric/40 shrink-0" data-i18n="card_status">
+                Internship Ready
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects & Case Studies Section -->
+  <section id="projects" class="editorial-light-bg relative py-20 sm:py-28 overflow-hidden">
+    <div
+      aria-hidden="true"
+      class="organic-blob-a pointer-events-none absolute top-24 right-0 w-80 h-80 bg-sapphire/[0.055] blur-3xl"
+    ></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.16em] text-sapphire mb-2" data-i18n="projects_eyebrow">
+            Selected Case Studies
+          </span>
+          <h2 class="font-art text-2xl sm:text-4xl font-semibold text-carbon tracking-[-0.02em]" data-i18n="projects_title">
+            UX/UI, IoT &amp; AI Portfolio
+          </h2>
+          <p class="text-slate-600 mt-2.5 max-w-2xl text-sm sm:text-base leading-relaxed" data-i18n="projects_subtitle">
+            Browse interactive UI previews, UX problem–solution stories, technical stack notes, and links to Figma, GitHub, and live apps.
+          </p>
+        </div>
+
+        <div id="filterTabs" class="flex flex-wrap gap-2" role="tablist" aria-label="Filter projects by category">
+          <button
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-filter="all"
+            onclick="setFilter('all')"
+            class="filter-btn tactile-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-carbon text-white shadow-sm cursor-pointer"
+            data-i18n="filter_all"
+          >
+            All Works
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-filter="ux-mobile"
+            onclick="setFilter('ux-mobile')"
+            class="filter-btn tactile-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-slate-700 border border-hairline hover:border-sapphire hover:text-sapphire cursor-pointer"
+            data-i18n="filter_ux"
+          >
+            UX/UI &amp; Mobile App
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-filter="iot-data"
+            onclick="setFilter('iot-data')"
+            class="filter-btn tactile-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-slate-700 border border-hairline hover:border-sapphire hover:text-sapphire cursor-pointer"
+            data-i18n="filter_data"
+          >
+            Data &amp; IoT Dashboard
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-filter="ai-web"
+            onclick="setFilter('ai-web')"
+            class="filter-btn tactile-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-white text-slate-700 border border-hairline hover:border-sapphire hover:text-sapphire cursor-pointer"
+            data-i18n="filter_ai"
+          >
+            Web &amp; AI
+          </button>
+        </div>
+      </div>
+
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+    </div>
+  </section>
+
+  <!-- Experience & Awards Section -->
+  <section id="experience" class="bg-white py-20 sm:py-28 border-y border-hairline">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll max-w-2xl mb-12">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.16em] text-sapphire mb-2" data-i18n="exp_eyebrow">
+          Experience &amp; Honors
+        </span>
+        <h2 class="font-art text-2xl sm:text-4xl font-semibold text-carbon tracking-[-0.02em]" data-i18n="exp_title">
+          Internship &amp; Competition Track Record
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="reveal-on-scroll lg:col-span-7 rounded-[32px] bg-carbon text-white p-6 sm:p-8 shadow-softFloat border border-white/10 relative overflow-hidden lg:-rotate-[0.8deg] hover:rotate-0 hover:-translate-y-1 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+          <div class="organic-blob-a absolute -top-24 -right-24 w-64 h-64 bg-sapphire/25 blur-3xl pointer-events-none"></div>
+
+          <div class="relative flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-sapphire/25 text-iceblue border border-electric/40" data-i18n="intern_badge">
+              UX/UI Design Intern
+            </span>
+            <span class="text-xs sm:text-sm font-medium text-slate-300">Apr – Jun 2026</span>
+          </div>
+
+          <h3 class="font-art text-xl sm:text-2xl font-semibold text-white tracking-tight">Forth Tracking System Co., Ltd.</h3>
+          <p class="relative text-sm text-iceblue font-medium mt-1" data-i18n="intern_project">
+            Project: Makro VIP Cool Box App (IoT Tracking &amp; Temp Sensor)
+          </p>
+
+          <ul id="internBullets" class="relative mt-6 space-y-3.5 text-sm text-slate-200 leading-relaxed"></ul>
+        </div>
+
+        <div class="lg:col-span-5 space-y-5 lg:mt-6">
+          <div class="reveal-on-scroll rounded-[26px] bg-alabaster border border-hairline p-6 shadow-galleryCard hover:shadow-galleryHover hover:-translate-y-1 hover:border-sapphire/40 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-[16px] bg-sapphire/10 text-sapphire flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 011.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-sapphire" data-i18n="award1_tag">First Runner-Up</span>
+                <h3 class="text-base sm:text-lg font-bold text-carbon mt-0.5">NT SPACE QUEST 2025</h3>
+                <p class="text-sm text-slate-600 mt-1 leading-relaxed" data-i18n="award1_desc">
+                  Urban Subsidence Predictive Platform — geo-spatial dashboard combining InSAR, soil, groundwater, and GNN forecasting.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal-on-scroll lg:translate-x-2 rounded-[26px] bg-alabaster border border-hairline p-6 shadow-galleryCard hover:shadow-galleryHover hover:-translate-y-1 hover:border-sapphire/40 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-[16px] bg-carbon text-iceblue flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-cobalt" data-i18n="award2_tag">Top 26 Finalist</span>
+                <h3 class="text-base sm:text-lg font-bold text-carbon mt-0.5" data-i18n="award2_title">
+                  Integrated Plant Production Innovation in PFAL
+                </h3>
+                <p class="text-sm text-slate-600 mt-1 leading-relaxed" data-i18n="award2_desc">
+                  SME Spectra-Dev Kit recognition for controlled-environment smart cultivation systems.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills, Education & Languages Section -->
+  <section id="skills" class="editorial-light-bg py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll max-w-2xl mb-12">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.16em] text-sapphire mb-2" data-i18n="skills_eyebrow">
+          Capabilities &amp; Education
+        </span>
+        <h2 class="font-art text-2xl sm:text-4xl font-semibold text-carbon tracking-[-0.02em]" data-i18n="skills_title">
+          Skills, Education &amp; Languages
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-7">
+        <div class="reveal-on-scroll md:col-span-8 rounded-[26px] bg-white border border-hairline p-6 sm:p-7 shadow-galleryCard hover:shadow-galleryHover transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-sapphire" data-i18n="edu_label">Education</div>
+            <h3 class="text-lg sm:text-xl font-bold text-carbon mt-1">
+              King Mongkut’s Institute of Technology Ladkrabang (KMITL)
+            </h3>
+            <p class="text-sm text-slate-600 mt-0.5" data-i18n="edu_degree">
+              Bachelor of Engineering in IoT and Information Engineering (2024 – Present)
+            </p>
+          </div>
+          <div class="sm:text-right shrink-0 bg-alabaster border border-hairline px-5 py-3.5 rounded-[20px]">
+            <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">GPA</div>
+            <div class="font-art text-2xl font-semibold text-sapphire">3.05</div>
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll md:col-span-4 rounded-[26px] bg-white border border-hairline p-6 sm:p-7 shadow-galleryCard hover:shadow-galleryHover transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
+          <div class="text-xs font-bold uppercase tracking-wider text-sapphire mb-3.5" data-i18n="lang_label">Languages</div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-sm">
+              <span class="font-semibold text-carbon" data-i18n="lang_th">Thai</span>
+              <span class="px-3 py-0.5 rounded-full text-xs font-semibold bg-sapphire/10 text-sapphire" data-i18n="lang_th_level">Native</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="font-semibold text-carbon" data-i18n="lang_en">English</span>
+              <span class="px-3 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-hairline">Placement Test B1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="reveal-on-scroll rounded-[26px] bg-white border border-hairline p-6 shadow-galleryCard hover:shadow-galleryHover hover:-translate-y-0.5 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-full bg-sapphire/10 text-sapphire flex items-center justify-center font-art italic font-semibold text-xs">UX</span>
+            <h3 class="font-bold text-base text-carbon" data-i18n="cat_design">Design Tools &amp; UX</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Figma (Interactive)</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Canva</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Wireframe</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">UI/UX Research</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">User Flow Design</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Responsive Web Design</span>
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll rounded-[26px] bg-white border border-hairline p-6 shadow-galleryCard hover:shadow-galleryHover hover:-translate-y-0.5 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-full bg-cobalt/10 text-cobalt flex items-center justify-center font-bold text-xs">&lt;/&gt;</span>
+            <h3 class="font-bold text-base text-carbon" data-i18n="cat_prog">Programming &amp; Web</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">HTML</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">CSS</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">JavaScript</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">PHP</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Python</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">C</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">SQL (MySQL)</span>
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll rounded-[26px] bg-white border border-hairline p-6 shadow-galleryCard hover:shadow-galleryHover hover:-translate-y-0.5 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-full bg-carbon text-iceblue flex items-center justify-center font-art italic font-semibold text-xs">IoT</span>
+            <h3 class="font-bold text-base text-carbon" data-i18n="cat_iot">Engineering &amp; IoT</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">IoT System Architecture</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Microcontrollers</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Sensor Integration</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Arduino IDE</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">WinCupl</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">MQTT</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">HTTP</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">Node-RED</span>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-alabaster text-slate-800 border border-hairline">MIT App Inventor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer -->
+  <footer id="contact" class="editorial-dark-bg relative text-white pt-20 pb-10 border-t border-white/10 overflow-hidden">
+    <div
+      aria-hidden="true"
+      class="organic-blob-b pointer-events-none absolute -bottom-24 right-[12%] w-80 h-80 bg-sapphire/15 blur-3xl"
+    ></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.16em] text-iceblue mb-2" data-i18n="contact_eyebrow">
+              Contact
+            </span>
+            <h2 class="font-art text-2xl sm:text-4xl font-semibold tracking-[-0.02em]" data-i18n="contact_title">
+              Let’s build something clear and meaningful together.
+            </h2>
+            <p class="text-slate-300 mt-3 text-sm sm:text-base max-w-xl leading-relaxed" data-i18n="contact_subtitle">
+              Whether you’re recruiting for a UX/UI Design internship, collaborating on a product interface, or exploring IoT/web work, feel free to say hello.
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-3 rounded-[22px] bg-obsidian/90 border border-white/10 px-4 py-3.5 hover:border-electric/40 transition-colors">
+              <div class="min-w-0">
+                <div class="text-[11px] uppercase tracking-wider text-slate-400" data-i18n="label_phone">Phone</div>
+                <a href="tel:0638016459" class="text-sm font-semibold text-white hover:text-iceblue transition-colors">063-801-6459</a>
+              </div>
+              <button
+                type="button"
+                onclick="copyText('063-801-6459', 'Phone number copied!')"
+                class="tactile-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/[0.06] hover:bg-sapphire text-white cursor-pointer shrink-0"
+                data-i18n="btn_copy"
+              >
+                Copy
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between gap-3 rounded-[22px] bg-obsidian/90 border border-white/10 px-4 py-3.5 hover:border-electric/40 transition-colors">
+              <div class="min-w-0">
+                <div class="text-[11px] uppercase tracking-wider text-slate-400" data-i18n="label_email">Email</div>
+                <a href="mailto:natnaree.yuttachit1@gmail.com" class="text-sm font-semibold text-white hover:text-iceblue transition-colors break-all">
+                  natnaree.yuttachit1@gmail.com
+                </a>
+              </div>
+              <button
+                type="button"
+                onclick="copyText('natnaree.yuttachit1@gmail.com', 'Email address copied!')"
+                class="tactile-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/[0.06] hover:bg-sapphire text-white cursor-pointer shrink-0"
+                data-i18n="btn_copy"
+              >
+                Copy
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between gap-3 rounded-[22px] bg-obsidian/90 border border-white/10 px-4 py-3.5 hover:border-electric/40 transition-colors">
+              <div class="min-w-0">
+                <div class="text-[11px] uppercase tracking-wider text-slate-400">GitHub</div>
+                <a href="https://github.com/Natnaree3010" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-iceblue hover:underline break-all">
+                  https://github.com/Natnaree3010
+                </a>
+              </div>
+              <button
+                type="button"
+                onclick="copyText('https://github.com/Natnaree3010', 'GitHub URL copied!')"
+                class="tactile-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/[0.06] hover:bg-sapphire text-white cursor-pointer shrink-0"
+                data-i18n="btn_copy"
+              >
+                Copy
+              </button>
+            </div>
+
+            <div class="rounded-[22px] bg-obsidian/90 border border-white/10 px-4 py-3.5">
+              <div class="text-[11px] uppercase tracking-wider text-slate-400" data-i18n="label_address">Location</div>
+              <p class="text-sm text-slate-200 mt-0.5">Chaloem Phra Kiat Ro 9, Prawet, Bangkok 10250</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <form id="contactForm" onsubmit="handleFormSubmit(event)" class="rounded-[30px] bg-obsidian/90 border border-white/15 p-6 sm:p-8 space-y-4 shadow-softFloat">
+            <h3 class="font-art text-xl font-semibold text-white" data-i18n="form_title">Send a Note</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="senderName" class="block text-xs font-medium text-slate-300 mb-1.5" data-i18n="form_name">Your Name</label>
+                <input
+                  id="senderName"
+                  type="text"
+                  required
+                  placeholder="Your name or team"
+                  class="w-full rounded-2xl bg-carbon border border-white/15 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-electric transition-colors"
+                />
+              </div>
+              <div>
+                <label for="senderEmail" class="block text-xs font-medium text-slate-300 mb-1.5" data-i18n="form_email">Your Email</label>
+                <input
+                  id="senderEmail"
+                  type="email"
+                  required
+                  placeholder="name@company.com"
+                  class="w-full rounded-2xl bg-carbon border border-white/15 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-electric transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="senderTopic" class="block text-xs font-medium text-slate-300 mb-1.5" data-i18n="form_topic">Subject</label>
+              <select
+                id="senderTopic"
+                class="w-full rounded-2xl bg-carbon border border-white/15 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-electric transition-colors"
+              >
+                <option value="UX/UI Design Internship" data-i18n="topic_intern">UX/UI Design Internship</option>
+                <option value="Product / UI Design Collaboration" data-i18n="topic_design">Product / UI Design Collaboration</option>
+                <option value="Web & IoT Dashboard Inquiry" data-i18n="topic_web">Web &amp; IoT Dashboard Inquiry</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="senderMessage" class="block text-xs font-medium text-slate-300 mb-1.5" data-i18n="form_msg">Message</label>
+              <textarea
+                id="senderMessage"
+                rows="4"
+                required
+                placeholder="Share a quick note about the internship role, project, or idea..."
+                class="w-full rounded-2xl bg-carbon border border-white/15 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-electric transition-colors resize-y"
+              ></textarea>
+            </div>
+
+            <div id="formFeedback" class="hidden rounded-2xl px-4 py-3 text-xs sm:text-sm font-medium bg-sapphire/20 border border-electric/40 text-iceblue"></div>
+
+            <button
+              type="submit"
+              class="tactile-btn w-full py-3 px-6 rounded-full font-semibold text-sm bg-sapphire hover:bg-electric hover:-translate-y-0.5 text-white shadow-cobaltGlow cursor-pointer focus:outline-none focus:ring-2 focus:ring-iceblue"
+              data-i18n="form_submit"
+            >
+              Send Note
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <p>© <span id="yearSpan">2026</span> Natnaree Yuttachit. All rights reserved.</p>
+        <p data-i18n="footer_note">Fluid UX/UI &amp; Engineering Portfolio • Blue, White &amp; Carbon Black</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Case Study Modal -->
+  <div
+    id="caseStudyModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="caseModalTitle"
+    class="fixed inset-0 z-[70] hidden items-center justify-center p-4 modal-backdrop overflow-y-auto"
+    onclick="handleBackdropClick(event, 'caseStudyModal')"
+  >
+    <div class="modal-panel-enter bg-white text-carbon rounded-[28px] max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-hairline my-auto">
+      <div class="sticky top-0 z-10 bg-carbon/95 backdrop-blur-md text-white px-6 py-4 flex items-center justify-between border-b border-white/10">
+        <div>
+          <span id="caseModalPeriod" class="text-xs font-semibold text-iceblue uppercase tracking-wider"></span>
+          <h3 id="caseModalTitle" class="text-lg sm:text-xl font-bold mt-0.5"></h3>
+        </div>
+        <button
+          type="button"
+          onclick="closeModal('caseStudyModal')"
+          aria-label="Close case study modal"
+          class="tactile-btn p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 cursor-pointer"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="caseModalBody" class="p-6 sm:p-7 space-y-6"></div>
+    </div>
+  </div>
+
+  <!-- Resume Modal -->
+  <div
+    id="resumeModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="resumeModalTitle"
+    class="fixed inset-0 z-[70] hidden items-center justify-center p-4 modal-backdrop overflow-y-auto"
+    onclick="handleBackdropClick(event, 'resumeModal')"
+  >
+    <div class="modal-panel-enter bg-white text-carbon rounded-[28px] max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-hairline my-auto">
+      <div class="sticky top-0 z-10 bg-carbon/95 backdrop-blur-md text-white px-6 py-4 flex items-center justify-between border-b border-white/10">
+        <div>
+          <span class="text-xs font-semibold text-iceblue uppercase tracking-wider">Curriculum Vitae Summary</span>
+          <h3 id="resumeModalTitle" class="text-lg sm:text-xl font-bold">Natnaree Yuttachit — Resume</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            onclick="window.print()"
+            class="tactile-btn hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-sapphire hover:bg-electric text-white cursor-pointer"
+          >
+            Print / Save PDF
+          </button>
+          <button
+            type="button"
+            onclick="closeModal('resumeModal')"
+            aria-label="Close resume modal"
+            class="tactile-btn p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 cursor-pointer"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="p-6 sm:p-8 space-y-6 text-sm leading-relaxed">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-hairline">
+          <div>
+            <h4 class="font-art text-2xl font-semibold text-carbon tracking-tight">NATNAREE YUTTACHIT</h4>
+            <p class="text-sapphire font-semibold">UX/UI Designer • IoT &amp; Information Engineering Student</p>
+            <p class="text-xs text-slate-500 mt-1">Chaloem Phra Kiat Ro 9, Prawet, Bangkok 10250</p>
+          </div>
+          <div class="text-xs sm:text-right text-slate-600 space-y-1">
+            <div>063-801-6459</div>
+            <div>natnaree.yuttachit1@gmail.com</div>
+            <div>github.com/Natnaree3010</div>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="text-xs font-bold uppercase tracking-wider text-sapphire mb-1.5">Professional Summary</h5>
+          <p class="text-slate-700">
+            Third-year IoT &amp; Information Engineering student seeking a UX/UI Design internship. Skilled in UX Research, UI Design, and Web Development, with prior internship experience and award-winning hackathon projects bridging user needs with technology.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="rounded-2xl bg-alabaster border border-hairline p-4">
+            <h5 class="text-xs font-bold uppercase tracking-wider text-sapphire mb-2">Internship Experience</h5>
+            <p class="font-bold text-carbon">UX/UI Design Intern (Apr – Jun 2026)</p>
+            <p class="text-xs font-medium text-slate-600 mb-2">Forth Tracking System Co., Ltd. • Makro VIP Cool Box App</p>
+            <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
+              <li>End-to-end UX/UI (Discover–Test), wireframes &amp; prototypes in Figma.</li>
+              <li>Real-Time Dashboard, Data Logger charts/tables &amp; Upload Log flows.</li>
+              <li>Visual Identity (logo &amp; color system) aligned with IoT &amp; brand guidelines.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl bg-alabaster border border-hairline p-4">
+            <h5 class="text-xs font-bold uppercase tracking-wider text-cobalt mb-2">Education &amp; Languages</h5>
+            <p class="font-bold text-carbon">King Mongkut’s Institute of Technology Ladkrabang</p>
+            <p class="text-xs text-slate-700">B.Eng. in IoT and Information Engineering (2024 – Present)</p>
+            <p class="text-xs font-semibold text-sapphire mt-1">Current GPA: 3.05</p>
+            <div class="mt-3 pt-2.5 border-t border-hairline text-xs text-slate-700">
+              <span class="font-semibold">Languages:</span> Thai (Native), English (Placement Test B1)
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-alabaster border border-hairline p-4">
+          <h5 class="text-xs font-bold uppercase tracking-wider text-carbon mb-2">Awards &amp; Achievements</h5>
+          <ul class="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1">
+            <li><strong>First Runner-up:</strong> NT SPACE QUEST 2025 (Urban Subsidence Predictive Platform)</li>
+            <li><strong>Top 26 Finalist:</strong> Integrated Plant Production Innovation in PFAL (SME Spectra-Dev Kit)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script id="inlinePortfolioData" type="application/json">{
+  "projects": [
+    {
+      "id": "seaguard",
+      "category": "ai-web",
+      "badgeCategory": {
+        "en": "Satellite AI & Web",
+        "th": "AI ภาพถ่ายดาวเทียม & เว็บ"
+      },
+      "title": "SeaGuard — Multi-Temporal Satellite AI for Coral Bleaching Risk Monitoring ",
+      "year": "2026",
+      "role": {
+        "en": "UX/UI Designer & Web Developer",
+        "th": "นักออกแบบ UX/UI และนักพัฒนาเว็บ"
+      },
+      "shortDesc": {
+        "en": "Multi-temporal satellite AI platform forecasting 7-day coral bleaching risk, DHW trends, and interactive sea-temperature simulations.",
+        "th": "แพลตฟอร์ม AI วิเคราะห์ภาพถ่ายดาวเทียมหลายช่วงเวลา พยากรณ์ความเสี่ยงปะการังฟอกขาวล่วงหน้า 7 วัน พร้อมจำลองอุณหภูมิน้ำทะเลและ DHW"
+      },
+      "problem": {
+        "en": "Marine conservation teams and coastal stakeholders need a clear way to interpret satellite sea-surface temperature, DHW thresholds, and 7-day AI risk scores without wading through raw model logs.",
+        "th": "ผู้ดูแลระบบนิเวศทางทะเลต้องการมุมมองที่ช่วยให้เข้าใจค่าอุณหภูมิน้ำทะเล ค่า DHW และคะแนนความเสี่ยง AI ล่วงหน้า 7 วันได้ชัดเจนและรวดเร็ว"
+      },
+      "solution": {
+        "en": "Crafted a high-contrast dark analytical web UI with island selectors (Koh Mun Nai & Phi Phi Islands), a 3-step pipeline explanation, DHW trend graphs, and an interactive thermal simulation slider.",
+        "th": "ออกแบบเว็บ UI โทนเข้มที่อ่านง่าย มีระบบเลือกพื้นที่เกาะ (เกาะมันใน และหมู่เกาะพีพี) คำอธิบาย 3 ขั้นตอน กราฟแนวโน้ม DHW และแถบจำลองอุณหภูมิน้ำทะเล"
+      },
+      "highlights": {
+        "en": [
+          "7-day AI risk score & NOAA bleaching alert status indicators",
+          "Interactive water temperature slider illustrating heat-stress progression",
+          "Bilingual UI (TH / EN) and historical time-machine inspection"
+        ],
+        "th": [
+          "แสดงคะแนนความเสี่ยง AI ล่วงหน้า 7 วัน และระดับการแจ้งเตือนฟอกขาว",
+          "แถบจำลองอุณหภูมิน้ำทะเลแบบโต้ตอบได้เพื่อดูสภาวะความเครียดของปะการัง",
+          "รองรับภาษา TH/EN และดูข้อมูลย้อนหลังได้"
+        ]
+      },
+      "tools": [
+        "UI/UX Design",
+        "Web Development",
+        "Data Visualization",
+        "Satellite AI"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "Live Website",
+            "th": "เปิดเว็บไซต์จริง"
+          },
+          "url": "https://seaguard.onrender.com/",
+          "primary": true
+        },
+        {
+          "label": {
+            "en": "GitHub Repository",
+            "th": "โค้ดบน GitHub"
+          },
+          "url": "https://github.com/Natnaree3010/Multi-Temporal-Satellite-AI-for-Coral-Bleaching-Risk-Monitoring/tree/main/Multi-Temporal%20Satellite%20AI%20for%20Coral%20Bleaching%20Risk%20Monitoring/Seaguard-main",
+          "primary": false
+        }
+      ],
+      "artworkType": "seaguard"
+    },
+    {
+      "id": "urban-subsidence",
+      "category": "iot-data",
+      "badgeCategory": {
+        "en": "Geo-Spatial & GNN UI",
+        "th": "แดชบอร์ดภูมิสารสนเทศ & GNN"
+      },
+      "title": "Urban Subsidence Predictive Platform (BITFLOW)",
+      "year": "Oct 2025",
+      "role": {
+        "en": "UX/UI Design & Research",
+        "th": "ออกแบบ UX/UI และวิจัยผู้ใช้"
+      },
+      "shortDesc": {
+        "en": "Modular geo-spatial dashboard integrating InSAR satellite data, soil classification, groundwater, and GNN models to forecast 5–10 year land subsidence.",
+        "th": "แดชบอร์ดภูมิสารสนเทศแบบโมดูลาร์ ผสานข้อมูลดาวเทียม InSAR ชนิดดิน น้ำบาดาล และโมเดล GNN เพื่อพยากรณ์ดินทรุดล่วงหน้า 5–10 ปี พร้อมมุมมอง 3D"
+      },
+      "problem": {
+        "en": "Urban planners and analysts must synthesize satellite interferometry, soil layers, and multi-year subsidence forecasts without visual clutter.",
+        "th": "ผู้วางผังเมืองและผู้วิเคราะห์ต้องดูข้อมูลหลายชั้น ทั้งภาพดาวเทียม ชั้นดิน และแนวโน้มการทรุดตัว จึงต้องการโครงสร้าง UI ที่แยกหมวดหมู่ชัดเจน"
+      },
+      "solution": {
+        "en": "Designed a clean sidebar + modular card system presenting InSAR & heatmaps, soil composition, subsidence risk curves, and a 3D spatial risk view.",
+        "th": "ออกแบบเลย์เอาต์แบบแถบเมนูด้านข้างและการ์ดข้อมูลแยกหมวดหมู่ ทั้งภาพ InSAR/Heatmap สัดส่วนชั้นดิน กราฟแนวโน้มความเสี่ยง และมุมมองพื้นที่ 3 มิติ"
+      },
+      "highlights": {
+        "en": [
+          "First Runner-up winner at NT SPACE QUEST 2025",
+          "Unified 2D analytics dashboard and 3D subsidence risk visualization",
+          "Scannable hierarchy for infrastructure and urban planning teams"
+        ],
+        "th": [
+          "คว้ารางวัลรองชนะเลิศอันดับ 1 จากเวที NT SPACE QUEST 2025",
+          "รองรับทั้งหน้า Dashboard วิเคราะห์ข้อมูลและมุมมองความเสี่ยงแบบ 3 มิติ",
+          "จัดลำดับข้อมูลให้อ่านง่ายสำหรับการวางแผนโครงสร้างพื้นฐาน"
+        ]
+      },
+      "tools": [
+        "Figma",
+        "UI/UX Research",
+        "Data Dashboard UI",
+        "GNN & InSAR"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "Figma",
+            "th": "โปรไฟล์ Figma"
+          },
+          "url": "https://www.figma.com/design/r50Tif5YD6nljXmx9kZzOu/Urban-Subsidence-dashboard?node-id=0-1&t=BxQKpEO9mmypZP2c-1",
+          "primary": true
+        }
+      ],
+      "artworkType": "subsidence"
+    },
+    {
+      "id": "nexus-krungthai",
+      "category": "ux-mobile",
+      "badgeCategory": {
+        "en": "Inclusive Mobile UX",
+        "th": "UX/UI แอปธนาคารชุมชน"
+      },
+      "title": "Nexus — Reverse Innovation (Krungthai Bank)",
+      "year": "Oct 2025",
+      "role": {
+        "en": "UX/UI Designer",
+        "th": "นักออกแบบ UX/UI"
+      },
+      "shortDesc": {
+        "en": "Accessible UI and inclusive UX for mobile community banking queue booking and mobile unit tracking designed for non-digital-native users.",
+        "th": "ออกแบบ UI ที่อ่านง่ายและ Inclusive UX สำหรับระบบจองคิวและติดตามรถธนาคารชุมชนบนมือถือ เพื่อช่วยให้ผู้ใช้ทุกกลุ่มเข้าถึงบริการได้สะดวก"
+      },
+      "problem": {
+        "en": "Community users who are less accustomed to complex digital apps need clear action labels, straightforward step progression, and live fleet arrival status.",
+        "th": "ผู้ใช้งานในชุมชนที่อาจไม่คุ้นเคยกับแอปซับซ้อนต้องการปุ่มกดที่ชัดเจน ขั้นตอนที่ไม่ซับซ้อน และเห็นเวลาที่รถบริการจะมาถึงได้อย่างแม่นยำ"
+      },
+      "solution": {
+        "en": "Structured dedicated entry points for Queue Booking, Vehicle Tracking, and Booking History alongside map arrival tracking, clean input fields, and time-slot selection.",
+        "th": "จัดระเบียบเมนูหลักสำหรับจองคิว ติดตามรถ และประวัติการจอง พร้อมหน้าแผนที่แสดงเวลาถึงจุดหมาย ฟอร์มกรอกข้อมูลที่ชัดเจน และการเลือกช่วงเวลา"
+      },
+      "highlights": {
+        "en": [
+          "Inclusive UX tailored for non-digital-native community users",
+          "Complete journey from service choice and map stop to slot confirmation",
+          "Reduces waiting friction and travel uncertainty"
+        ],
+        "th": [
+          "ออกแบบ Inclusive UX สำหรับผู้ใช้งานที่อาจไม่ถนัดเทคโนโลยี",
+          "ครอบคลุมขั้นตอนตั้งแต่เลือกบริการ เลือกจุดจอดบนแผนที่ ไปจนถึงยืนยันคิว",
+          "ช่วยลดระยะเวลารอคอยและลดความไม่แน่นอนในการเดินทาง"
+        ]
+      },
+      "tools": [
+        "Figma",
+        "Inclusive UX",
+        "User Flow Design",
+        "Mobile UI"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "Project Folder (Drive)",
+            "th": "โฟลเดอร์ผลงาน (Drive)"
+          },
+          "url": "https://drive.google.com/drive/u/1/folders/1TOoYV3T2YuWbqNr8-MWi7Q-BRF3l-SWk?dmr=1&ec=wgc-drive-hero-goto",
+          "primary": true
+        }
+      ],
+      "artworkType": "nexus"
+    },
+    {
+      "id": "mushroom-dashboard",
+      "category": "iot-data",
+      "badgeCategory": {
+        "en": "IoT Dashboard & Hardware",
+        "th": "แดชบอร์ด IoT & ฮาร์ดแวร์"
+      },
+      "title": "Mushroom Cultivation Dashboard",
+      "year": "Nov 2025",
+      "role": {
+        "en": "IoT Developer, System & Dashboard Designer",
+        "th": "นักพัฒนา IoT และออกแบบระบบ/แดชบอร์ด"
+      },
+      "shortDesc": {
+        "en": "Minimalist IoT web dashboard displaying live sensor readings, trend graphs, and automated growth stage modes connected with ESP32, Raspberry Pi 4 (Flask), and MySQL.",
+        "th": "เว็บแดชบอร์ดฟาร์มเห็ดอัจฉริยะ แสดงค่าเซ็นเซอร์เรียลไทม์ กราฟต่อเนื่อง และโหมดควบคุมตามระยะการเติบโต เชื่อมต่อ ESP32, Raspberry Pi 4 (Flask) และ MySQL"
+      },
+      "problem": {
+        "en": "Cultivation stages require distinct environmental targets and continuous logging while automating actuators when thresholds are reached.",
+        "th": "แต่ละระยะของการเพาะเห็ดต้องการค่าสภาพแวดล้อมที่ต่างกัน พร้อมการเก็บข้อมูลต่อเนื่องและการสั่งงานอุปกรณ์อัตโนมัติเมื่อถึงเกณฑ์"
+      },
+      "solution": {
+        "en": "Developed a responsive web interface with HTML, CSS, JavaScript, and PHP integrated with ESP32 sensors, Raspberry Pi 4 (Flask) server, and automated control logic.",
+        "th": "พัฒนาเว็บแดชบอร์ดด้วย HTML, CSS, JavaScript และ PHP เชื่อมต่อกับ ESP32 และ Raspberry Pi 4 (Flask) พร้อมระบบสั่งงานอัตโนมัติและบันทึกข้อมูลลงฐานข้อมูล"
+      },
+      "highlights": {
+        "en": [
+          "Live telemetry for Temperature, Relative Humidity, and CO2 (ppm)",
+          "Stage operating modes: Incubation Period, Pinning Stage, Fruiting Stage",
+          "Continuous trend graphs and automated fan, misting, and light control"
+        ],
+        "th": [
+          "แสดงค่าเซ็นเซอร์แบบเรียลไทม์ ทั้งอุณหภูมิ ความชื้นสัมพัทธ์ และ CO2",
+          "เลือกโหมดการทำงานตามระยะเพาะเห็ดได้สะดวก",
+          "มีกราฟแนวโน้มต่อเนื่องและระบบสั่งงานอุปกรณ์อัตโนมัติ"
+        ]
+      },
+      "tools": [
+        "HTML / CSS / JS",
+        "PHP & MySQL",
+        "ESP32",
+        "Raspberry Pi 4 (Flask)"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "GitHub Repository",
+            "th": "โค้ดบน GitHub"
+          },
+          "url": "https://github.com/Natnaree3010/Mushroom-Cultivation-Dashboard",
+          "primary": true
+        }
+      ],
+      "artworkType": "mushroom"
+    },
+    {
+      "id": "study-buddy-match",
+      "category": "ux-mobile",
+      "badgeCategory": {
+        "en": "Mobile UI & Gamification",
+        "th": "UI แอปมือถือ & เกมมิฟิเคชัน"
+      },
+      "title": "Study Buddy Match",
+      "year": "Jan 2026",
+      "role": {
+        "en": "UI/UX Designer",
+        "th": "นักออกแบบ UI/UX"
+      },
+      "shortDesc": {
+        "en": "Social learning mobile app UI in Figma for matching study partners with shared academic goals, sharing summary sheets, and tracking focus EXP.",
+        "th": "ออกแบบ UI แอปโซเชียลเพื่อการเรียนรู้บน Figma สำหรับจับคู่เพื่อนติวตามเป้าหมายการเรียน แชร์ชีทสรุป และสะสมแต้ม EXP เพื่อสร้างแรงจูงใจ"
+      },
+      "problem": {
+        "en": "Studying alone can feel isolating; learners need an intuitive way to discover study buddies by subject, exchange summary sheets, and track study consistency.",
+        "th": "การอ่านหนังสือคนเดียวอาจทำให้ขาดแรงจูงใจ ผู้เรียนจึงต้องการช่องทางหาเพื่อนติวตามวิชา แชร์ชีทสรุป และเห็นความคืบหน้าของตนเอง"
+      },
+      "solution": {
+        "en": "Designed mobile screens featuring daily study sessions, buddy match scores, study sheet and post feeds, and EXP/streak progress cards.",
+        "th": "ออกแบบหน้าจอมือถือที่มีตารางเรียนประจำวัน เปอร์เซ็นต์จับคู่บัดดี้ ฟีดโพสต์/ชีทสรุป และการ์ดแสดงค่า EXP รวมถึงสถิติการเรียนต่อเนื่อง"
+      },
+      "highlights": {
+        "en": [
+          "Buddy match cards with subject tags and compatibility scores",
+          "Study Posts, Sheets, and Study Group browsing flows",
+          "Gamified Focus Power EXP, Contribution Points, and streak stats"
+        ],
+        "th": [
+          "การ์ดจับคู่บัดดี้พร้อมแท็กวิชาและความเข้ากันได้",
+          "แยกหมวดหมู่ Study Posts, Sheets และ Study Group ชัดเจน",
+          "เพิ่มระบบ Gamification เช่น EXP และสถิติการโฟกัสต่อเนื่อง"
+        ]
+      },
+      "tools": [
+        "Figma",
+        "Mobile UI Design",
+        "Gamified UX",
+        "Information Architecture"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "View in Figma",
+            "th": "ดูต้นแบบใน Figma"
+          },
+          "url": "https://www.figma.com/design/lvNSR9o0yUyI1zA8WmAiKs/Study-Buddy-Match?node-id=1-2&t=EBc8eGu663Du42Tn-1",
+          "primary": true
+        }
+      ],
+      "artworkType": "studybuddy"
+    },
+    {
+      "id": "bunny-planners",
+      "category": "ux-mobile",
+      "badgeCategory": {
+        "en": "End-to-End Mobile UX/UI",
+        "th": "UX/UI แอปวางแผนชีวิต"
+      },
+      "title": "Bunny Planners — Digital Planner App",
+      "year": "Jan 2026",
+      "role": {
+        "en": "UX/UI Designer",
+        "th": "นักออกแบบ UX/UI"
+      },
+      "shortDesc": {
+        "en": "End-to-end UX/UI design in Figma from wireframes to interactive prototypes for a mobile planner covering To-do list, Diary, Calendar, hydration, and daily vibe.",
+        "th": "ออกแบบ UX/UI แบบครบวงจรบน Figma ตั้งแต่ Wireframe จนถึง Prototype สำหรับแอปวางแผนชีวิต ทั้ง To-do list, Diary, ปฏิทิน การดื่มน้ำ และ Daily Vibe"
+      },
+      "problem": {
+        "en": "Users often abandon heavy planning tools; daily routines, notes, and habit check-ins work better when organized into light, focused flows.",
+        "th": "แอปวางแผนที่ซับซ้อนเกินไปอาจทำให้ใช้งานได้ไม่ต่อเนื่อง การจดภารกิจ บันทึกประจำวัน และเช็กนิสัยจึงควรจัดเป็นโฟลว์ที่เบาและชัดเจน"
+      },
+      "solution": {
+        "en": "Built interactive Figma screens across Home, Add Plan, and Monthly Calendar views with clear visual hierarchy, quick plan entry, and daily habit progress.",
+        "th": "ออกแบบหน้าจอแบบ Interactive บน Figma ทั้งหน้าหลัก หน้าเพิ่มแผนงาน และหน้าปฏิทินรายเดือน พร้อมการเพิ่มแผนงานที่รวดเร็วและการติดตามความคืบหน้า"
+      },
+      "highlights": {
+        "en": [
+          "End-to-end Figma workflow from wireframes to interactive prototype",
+          "Integrates To-do list, Timeline view, Monthly Calendar, and Diary",
+          "Includes daily vibe check-in and hydration / habit counters"
+        ],
+        "th": [
+          "ทำงานครบตั้งแต่ Wireframe สู่ Interactive Prototype บน Figma",
+          "รวมฟีเจอร์ To-do list, Timeline, ปฏิทินรายเดือน และ Diary ไว้ในที่เดียว",
+          "มีส่วนบันทึก Daily Vibe และติดตามการดื่มน้ำ/เป้าหมายรายวัน"
+        ]
+      },
+      "tools": [
+        "Figma (Interactive)",
+        "Wireframing",
+        "Prototyping",
+        "Mobile UX/UI"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "View in Figma",
+            "th": "ดูต้นแบบใน Figma"
+          },
+          "url": "https://www.figma.com/design/7VZqQhjQEbT6fMjvQstXo8/Bunny-Planners?node-id=0-1&t=fbWp1GRtkOW4xZsY-1",
+          "primary": true
+        }
+      ],
+      "artworkType": "bunny"
+    }
+  ],
+  "translations": {
+    "en": {
+      "nav_projects": "Projects",
+      "nav_experience": "Experience",
+      "nav_skills": "Skills & Education",
+      "nav_contact": "Contact",
+      "lang_switch": "TH / EN",
+      "btn_resume": "View Resume",
+      "hero_badge": "UX/UI Designer • IoT & Web Developer • KMITL",
+      "hero_title_1": "Thoughtful interfaces for",
+      "hero_title_2": "connected IoT, data & AI systems.",
+      "hero_summary": "Third-year IoT & Information Engineering student at KMITL looking for a UX/UI Design internship. I love turning complex workflows, sensor data, and AI insights into calm, intuitive experiences people genuinely enjoy using.",
+      "hero_cta_primary": "Explore Work",
+      "hero_cta_secondary": "Open CV Summary",
+      "hero_location": "Prawet, Bangkok",
+      "card_role": "UX/UI Designer • IoT & Info Eng.",
+      "card_status": "Internship Ready",
+      "stat_projects": "Featured UX, IoT & AI Works",
+      "stat_intern": "UX/UI Intern • Apr–Jun 2026",
+      "stat_award": "1st Runner-Up • 2025",
+      "stat_gpa": "GPA • KMITL (2024–Present)",
+      "card_focus_label": "Discipline & Craft",
+      "projects_eyebrow": "Selected Case Studies",
+      "projects_title": "UX/UI, IoT & AI Portfolio",
+      "projects_subtitle": "Browse interactive UI previews, UX problem–solution stories, technical stack notes, and links to Figma, GitHub, and live apps.",
+      "filter_all": "All Works",
+      "filter_ux": "UX/UI & Mobile App",
+      "filter_data": "Data & IoT Dashboard",
+      "filter_ai": "Web & AI",
+      "exp_eyebrow": "Experience & Honors",
+      "exp_title": "Internship & Competition Track Record",
+      "intern_badge": "UX/UI Design Intern",
+      "intern_project": "Project: Makro VIP Cool Box App (IoT Tracking & Temp Sensor)",
+      "award1_tag": "First Runner-Up",
+      "award1_desc": "Urban Subsidence Predictive Platform — geo-spatial dashboard combining InSAR, soil, groundwater, and GNN forecasting.",
+      "award2_tag": "Top 26 Finalist",
+      "award2_title": "Integrated Plant Production Innovation in PFAL",
+      "award2_desc": "SME Spectra-Dev Kit recognition for controlled-environment smart cultivation systems.",
+      "skills_eyebrow": "Capabilities & Education",
+      "skills_title": "Skills, Education & Languages",
+      "edu_label": "Education",
+      "edu_degree": "Bachelor of Engineering in IoT and Information Engineering (2024 – Present)",
+      "lang_label": "Languages",
+      "lang_th": "Thai",
+      "lang_th_level": "Native",
+      "lang_en": "English",
+      "cat_design": "Design Tools & UX",
+      "cat_prog": "Programming & Web",
+      "cat_iot": "Engineering & IoT",
+      "contact_eyebrow": "Contact",
+      "contact_title": "Let’s build something clear and meaningful together.",
+      "contact_subtitle": "Whether you’re recruiting for a UX/UI Design internship, collaborating on a product interface, or exploring IoT/web work, feel free to say hello.",
+      "label_phone": "Phone",
+      "label_email": "Email",
+      "label_address": "Location",
+      "btn_copy": "Copy",
+      "form_title": "Send a Note",
+      "form_name": "Your Name",
+      "form_email": "Your Email",
+      "form_topic": "Subject",
+      "topic_intern": "UX/UI Design Internship",
+      "topic_design": "Product / UI Design Collaboration",
+      "topic_web": "Web & IoT Dashboard Inquiry",
+      "form_msg": "Message",
+      "form_submit": "Send Note",
+      "footer_note": "Fluid UX/UI & Engineering Portfolio • Blue, White & Carbon Black"
+    },
+    "th": {
+      "nav_projects": "ผลงาน",
+      "nav_experience": "ประสบการณ์",
+      "nav_skills": "ทักษะ & การศึกษา",
+      "nav_contact": "ติดต่อ",
+      "lang_switch": "EN / TH",
+      "btn_resume": "ดูเรซูเม่",
+      "hero_badge": "UX/UI Designer • IoT & Web Developer • สจล.",
+      "hero_title_1": "ออกแบบอินเทอร์เฟซที่ลื่นไหล",
+      "hero_title_2": "เชื่อมโยงระบบ IoT ข้อมูล และ AI อย่างเป็นธรรมชาติ",
+      "hero_summary": "นักศึกษาชั้นปีที่ 3 สาขาวิศวกรรม IoT และสารสนเทศ สจล. กำลังมองหาโอกาสฝึกงานตำแหน่ง UX/UI Designer ชอบเปลี่ยนเรื่องซับซ้อนอย่างโฟลว์การทำงาน ข้อมูลเซ็นเซอร์ และผลลัพธ์จาก AI ให้กลายเป็นประสบการณ์ที่เข้าใจง่ายและน่าใช้งานจริง",
+      "hero_cta_primary": "สำรวจผลงาน",
+      "hero_cta_secondary": "สรุปเรซูเม่",
+      "hero_location": "ประเวศ กรุงเทพมหานคร",
+      "card_role": "UX/UI Designer • วิศวกรรม IoT และสารสนเทศ",
+      "card_status": "พร้อมฝึกงาน",
+      "stat_projects": "โปรเจกต์ UX, IoT & AI",
+      "stat_intern": "ฝึกงาน UX/UI • เม.ย.–มิ.ย. 2026",
+      "stat_award": "รองชนะเลิศอันดับ 1 • 2025",
+      "stat_gpa": "เกรดเฉลี่ย • สจล. (2024–ปัจจุบัน)",
+      "card_focus_label": "ความเชี่ยวชาญหลัก",
+      "projects_eyebrow": "Case Study & ผลงานเด่น",
+      "projects_title": "ผลงานด้าน UX/UI, IoT และ AI",
+      "projects_subtitle": "กดเลือกดูรายละเอียดแต่ละโปรเจกต์เพื่ออ่านแนวคิดการออกแบบ จุดเด่นของระบบ และลิงก์ Figma, GitHub หรือเว็บจริง",
+      "filter_all": "ทั้งหมด",
+      "filter_ux": "UX/UI & แอปมือถือ",
+      "filter_data": "แดชบอร์ดข้อมูล & IoT",
+      "filter_ai": "เว็บ & AI",
+      "exp_eyebrow": "ประสบการณ์ & รางวัล",
+      "exp_title": "ประสบการณ์ฝึกงานและเวทีการแข่งขัน",
+      "intern_badge": "นักศึกษาฝึกงาน UX/UI Design",
+      "intern_project": "โปรเจกต์: Makro VIP Cool Box App (ระบบติดตาม IoT และเซ็นเซอร์อุณหภูมิ)",
+      "award1_tag": "รองชนะเลิศอันดับ 1",
+      "award1_desc": "ผลงานแพลตฟอร์มพยากรณ์ดินทรุดด้วยโมเดล GNN และข้อมูลดาวเทียม InSAR",
+      "award2_tag": "Top 26 Finalist",
+      "award2_title": "การประกวดนวัตกรรมการผลิตพืชในโรงงานผลิตพืช (PFAL)",
+      "award2_desc": "เข้ารอบสุดท้ายพร้อมรับ SME Spectra-Dev Kit สำหรับพัฒนานวัตกรรมการเพาะปลูกอัจฉริยะ",
+      "skills_eyebrow": "ทักษะ & ประวัติการศึกษา",
+      "skills_title": "ทักษะ การศึกษา และภาษา",
+      "edu_label": "การศึกษา",
+      "edu_degree": "วิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรม IoT และสารสนเทศ (2024 – ปัจจุบัน)",
+      "lang_label": "ทักษะภาษา",
+      "lang_th": "ภาษาไทย",
+      "lang_th_level": "เจ้าของภาษา",
+      "lang_en": "ภาษาอังกฤษ",
+      "cat_design": "เครื่องมือออกแบบ & UX",
+      "cat_prog": "การเขียนโปรแกรม & เว็บ",
+      "cat_iot": "วิศวกรรม & ระบบ IoT",
+      "contact_eyebrow": "ช่องทางการติดต่อ",
+      "contact_title": "มาพูดคุยและสร้างสรรค์ผลงานดีๆ ร่วมกันค่ะ",
+      "contact_subtitle": "เปิดรับโอกาสฝึกงานตำแหน่ง UX/UI Design การทำงานร่วมกันด้าน Product/UI หรือโปรเจกต์เว็บและแดชบอร์ด IoT ทักมาคุยกันได้เลยค่ะ",
+      "label_phone": "โทรศัพท์",
+      "label_email": "อีเมล",
+      "label_address": "ที่อยู่",
+      "btn_copy": "คัดลอก",
+      "form_title": "ส่งข้อความถึงฉัน",
+      "form_name": "ชื่อของคุณ",
+      "form_email": "อีเมลของคุณ",
+      "form_topic": "หัวข้อ",
+      "topic_intern": "ฝึกงานตำแหน่ง UX/UI Design",
+      "topic_design": "ร่วมงานด้าน Product / UI Design",
+      "topic_web": "สอบถามด้านเว็บและแดชบอร์ด IoT",
+      "form_msg": "ข้อความ",
+      "form_submit": "ส่งข้อความ",
+      "footer_note": "พอร์ตโฟลิโอสาย UX/UI & วิศวกรรม • โทนสีน้ำเงิน ขาว และดำคาร์บอน"
+    }
+  },
+  "internBullets": {
+    "en": [
+      "Led end-to-end UX/UI design (Discover–Test), building wireframes and interactive prototypes in Figma.",
+      "Designed Real-Time Dashboard, Data Logger charts/tables, and Upload Log flows to simplify operational UX.",
+      "Created Visual Identity (logo and color system) aligned with IoT context and brand guidelines."
+    ],
+    "th": [
+      "ดูแลงานออกแบบ UX/UI แบบครบวงจร (Discover–Test) สร้าง Wireframe และ Interactive Prototype บน Figma",
+      "ออกแบบ Real-Time Dashboard, ตาราง/กราฟ Data Logger และโฟลว์ Upload Log ให้ใช้งานได้ง่ายและลดความซับซ้อน",
+      "สร้าง Visual Identity (โลโก้และระบบสี) ให้สอดคล้องกับระบบ IoT และ Brand Guidelines"
+    ]
+  }
+}</script>
+  <script src="js/app.js"></script>
+</body>
+</html>

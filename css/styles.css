@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Editorial Tech Portfolio — Stylesheet
+   Palette: Blue (#1D4ED8 / #2563EB / #3B82F6 / #93C5FD),
+            White (#FFFFFF / #F8FAFC), Carbon Black (#090B10 / #111520)
+   ========================================================================== */
+
+:root {
+  --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.32, 0.64, 1);
+  --mouse-x: 50%;
+  --mouse-y: 35%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'IBM Plex Sans Thai', sans-serif;
+  background-color: #F8FAFC;
+  color: #090B10;
+  overflow-x: hidden;
+}
+
+:lang(th) body,
+.thai-copy {
+  font-family: 'IBM Plex Sans Thai', 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+.font-art {
+  font-family: 'Fraunces', 'IBM Plex Sans Thai', Georgia, serif;
+  font-variation-settings: "SOFT" 65, "WONK" 1;
+}
+
+/* Artistic editorial dark & light canvases with organic light washes */
+.editorial-dark-bg {
+  background-color: #090B10;
+  background-image:
+    radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.18), transparent 42%),
+    radial-gradient(ellipse 68% 54% at 80% 18%, rgba(37, 99, 235, 0.22), transparent 68%),
+    radial-gradient(ellipse 58% 50% at 14% 85%, rgba(29, 78, 216, 0.16), transparent 72%);
+}
+
+.editorial-light-bg {
+  background-color: #F8FAFC;
+  background-image:
+    radial-gradient(circle at 88% 10%, rgba(37, 99, 235, 0.075), transparent 44%),
+    radial-gradient(circle at 10% 82%, rgba(59, 130, 246, 0.06), transparent 46%);
+}
+
+/* Organic morphing blobs so shapes never feel boxy */
+@keyframes morphBlobA {
+  0%, 100% {
+    border-radius: 62% 38% 46% 54% / 52% 60% 40% 48%;
+    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    border-radius: 45% 55% 63% 37% / 41% 45% 55% 59%;
+    transform: translate3d(-14px, 16px, 0) rotate(6deg) scale(1.04);
+  }
+  66% {
+    border-radius: 56% 44% 38% 62% / 64% 37% 63% 36%;
+    transform: translate3d(10px, -12px, 0) rotate(-4deg) scale(0.98);
+  }
+}
+
+@keyframes morphBlobB {
+  0%, 100% {
+    border-radius: 44% 56% 60% 40% / 58% 42% 58% 42%;
+    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 63% 37% 42% 58% / 43% 62% 38% 57%;
+    transform: translate3d(16px, -14px, 0) rotate(-7deg) scale(1.05);
+  }
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.965);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.organic-blob-a {
+  animation: morphBlobA 14s var(--ease-fluid) infinite;
+  will-change: transform, border-radius;
+}
+
+.organic-blob-b {
+  animation: morphBlobB 16s var(--ease-fluid) infinite;
+  will-change: transform, border-radius;
+}
+
+.project-card-enter {
+  animation: cardEnter 0.6s var(--ease-fluid) both;
+}
+
+.modal-panel-enter {
+  animation: modalPop 0.38s var(--ease-spring) both;
+}
+
+/* Smooth scroll reveal transition */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition: opacity 0.75s var(--ease-fluid), transform 0.75s var(--ease-fluid);
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Tactile press feel */
+.tactile-btn {
+  transition: transform 0.28s var(--ease-spring), background-color 0.25s var(--ease-fluid), border-color 0.25s var(--ease-fluid), box-shadow 0.3s var(--ease-fluid), color 0.25s var(--ease-fluid);
+}
+.tactile-btn:active {
+  transform: scale(0.965);
+}
+
+/* Animated underline link */
+.nav-link-fluid {
+  position: relative;
+  transition: color 0.25s var(--ease-fluid);
+}
+.nav-link-fluid::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg, #3B82F6, #93C5FD);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.36s var(--ease-fluid);
+  border-radius: 9999px;
+}
+.nav-link-fluid:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Editorial italic accent */
+.editorial-italic {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.modal-backdrop {
+  backdrop-filter: blur(12px);
+  background-color: rgba(9, 11, 16, 0.74);
+  transition: opacity 0.28s var(--ease-fluid);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .organic-blob-a,
+  .organic-blob-b,
+  .project-card-enter,
+  .modal-panel-enter {
+    animation: none !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .tactile-btn,
+  .nav-link-fluid,
+  .nav-link-fluid::after {
+    transition: none !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+@keyframes morphPortrait {
+  0%, 100% {
+    border-radius: 48% 52% 42% 58% / 55% 44% 56% 45%;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    border-radius: 56% 44% 54% 46% / 44% 56% 44% 56%;
+    transform: translate3d(0, -4px, 0) rotate(1.2deg);
+  }
+}
+
+.portrait-organic {
+  animation: morphPortrait 12s var(--ease-fluid) infinite;
+  will-change: transform, border-radius;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-organic {
+    animation: none !important;
+  }
+}

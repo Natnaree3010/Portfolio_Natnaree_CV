@@ -1,0 +1,488 @@
+{
+  "projects": [
+    {
+      "id": "seaguard",
+      "category": "ai-web",
+      "badgeCategory": {
+        "en": "Satellite AI & Web",
+        "th": "AI ภาพถ่ายดาวเทียม & เว็บ"
+      },
+      "title": "SeaGuard — Multi-Temporal Satellite AI",
+      "year": "2026",
+      "role": {
+        "en": "UX/UI Designer & Web Developer",
+        "th": "นักออกแบบ UX/UI และนักพัฒนาเว็บ"
+      },
+      "shortDesc": {
+        "en": "Multi-temporal satellite AI platform forecasting 7-day coral bleaching risk, DHW trends, and interactive sea-temperature simulations.",
+        "th": "แพลตฟอร์ม AI วิเคราะห์ภาพถ่ายดาวเทียมหลายช่วงเวลา พยากรณ์ความเสี่ยงปะการังฟอกขาวล่วงหน้า 7 วัน พร้อมจำลองอุณหภูมิน้ำทะเลและ DHW"
+      },
+      "problem": {
+        "en": "Marine conservation teams and coastal stakeholders need a clear way to interpret satellite sea-surface temperature, DHW thresholds, and 7-day AI risk scores without wading through raw model logs.",
+        "th": "ผู้ดูแลระบบนิเวศทางทะเลต้องการมุมมองที่ช่วยให้เข้าใจค่าอุณหภูมิน้ำทะเล ค่า DHW และคะแนนความเสี่ยง AI ล่วงหน้า 7 วันได้ชัดเจนและรวดเร็ว"
+      },
+      "solution": {
+        "en": "Crafted a high-contrast dark analytical web UI with island selectors (Koh Mun Nai & Phi Phi Islands), a 3-step pipeline explanation, DHW trend graphs, and an interactive thermal simulation slider.",
+        "th": "ออกแบบเว็บ UI โทนเข้มที่อ่านง่าย มีระบบเลือกพื้นที่เกาะ (เกาะมันใน และหมู่เกาะพีพี) คำอธิบาย 3 ขั้นตอน กราฟแนวโน้ม DHW และแถบจำลองอุณหภูมิน้ำทะเล"
+      },
+      "highlights": {
+        "en": [
+          "7-day AI risk score & NOAA bleaching alert status indicators",
+          "Interactive water temperature slider illustrating heat-stress progression",
+          "Bilingual UI (TH / EN) and historical time-machine inspection"
+        ],
+        "th": [
+          "แสดงคะแนนความเสี่ยง AI ล่วงหน้า 7 วัน และระดับการแจ้งเตือนฟอกขาว",
+          "แถบจำลองอุณหภูมิน้ำทะเลแบบโต้ตอบได้เพื่อดูสภาวะความเครียดของปะการัง",
+          "รองรับภาษา TH/EN และดูข้อมูลย้อนหลังได้"
+        ]
+      },
+      "tools": [
+        "UI/UX Design",
+        "Web Development",
+        "Data Visualization",
+        "Satellite AI"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "Live Website",
+            "th": "เปิดเว็บไซต์จริง"
+          },
+          "url": "https://seaguard.onrender.com/",
+          "primary": true
+        },
+        {
+          "label": {
+            "en": "GitHub Repository",
+            "th": "โค้ดบน GitHub"
+          },
+          "url": "https://github.com/Natnaree3010/Multi-Temporal-Satellite-Al-for-Coral-Bleaching-Risk-Monitoring/tree/main/Multi-Temporal%20Satellite%20Al%20for%20Coral%20Bleaching%20Risk%20Monitoring/Seaguard-main",
+          "primary": false
+        }
+      ],
+      "artworkType": "seaguard"
+    },
+    {
+      "id": "urban-subsidence",
+      "category": "iot-data",
+      "badgeCategory": {
+        "en": "Geo-Spatial & GNN UI",
+        "th": "แดชบอร์ดภูมิสารสนเทศ & GNN"
+      },
+      "title": "Urban Subsidence Predictive Platform (BITFLOW)",
+      "year": "Oct 2025",
+      "role": {
+        "en": "UX/UI Design & Research",
+        "th": "ออกแบบ UX/UI และวิจัยผู้ใช้"
+      },
+      "shortDesc": {
+        "en": "Modular geo-spatial dashboard integrating InSAR satellite data, soil classification, groundwater, and GNN models to forecast 5–10 year land subsidence.",
+        "th": "แดชบอร์ดภูมิสารสนเทศแบบโมดูลาร์ ผสานข้อมูลดาวเทียม InSAR ชนิดดิน น้ำบาดาล และโมเดล GNN เพื่อพยากรณ์ดินทรุดล่วงหน้า 5–10 ปี พร้อมมุมมอง 3D"
+      },
+      "problem": {
+        "en": "Urban planners and analysts must synthesize satellite interferometry, soil layers, and multi-year subsidence forecasts without visual clutter.",
+        "th": "ผู้วางผังเมืองและผู้วิเคราะห์ต้องดูข้อมูลหลายชั้น ทั้งภาพดาวเทียม ชั้นดิน และแนวโน้มการทรุดตัว จึงต้องการโครงสร้าง UI ที่แยกหมวดหมู่ชัดเจน"
+      },
+      "solution": {
+        "en": "Designed a clean sidebar + modular card system presenting InSAR & heatmaps, soil composition, subsidence risk curves, and a 3D spatial risk view.",
+        "th": "ออกแบบเลย์เอาต์แบบแถบเมนูด้านข้างและการ์ดข้อมูลแยกหมวดหมู่ ทั้งภาพ InSAR/Heatmap สัดส่วนชั้นดิน กราฟแนวโน้มความเสี่ยง และมุมมองพื้นที่ 3 มิติ"
+      },
+      "highlights": {
+        "en": [
+          "First Runner-up winner at NT SPACE QUEST 2025",
+          "Unified 2D analytics dashboard and 3D subsidence risk visualization",
+          "Scannable hierarchy for infrastructure and urban planning teams"
+        ],
+        "th": [
+          "คว้ารางวัลรองชนะเลิศอันดับ 1 จากเวที NT SPACE QUEST 2025",
+          "รองรับทั้งหน้า Dashboard วิเคราะห์ข้อมูลและมุมมองความเสี่ยงแบบ 3 มิติ",
+          "จัดลำดับข้อมูลให้อ่านง่ายสำหรับการวางแผนโครงสร้างพื้นฐาน"
+        ]
+      },
+      "tools": [
+        "Figma",
+        "UI/UX Research",
+        "Data Dashboard UI",
+        "GNN & InSAR"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "GitHub Profile",
+            "th": "โปรไฟล์ GitHub"
+          },
+          "url": "https://github.com/Natnaree3010",
+          "primary": true
+        }
+      ],
+      "artworkType": "subsidence"
+    },
+    {
+      "id": "nexus-krungthai",
+      "category": "ux-mobile",
+      "badgeCategory": {
+        "en": "Inclusive Mobile UX",
+        "th": "UX/UI แอปธนาคารชุมชน"
+      },
+      "title": "Nexus — Reverse Innovation (Krungthai Bank)",
+      "year": "Oct 2025",
+      "role": {
+        "en": "UX/UI Designer",
+        "th": "นักออกแบบ UX/UI"
+      },
+      "shortDesc": {
+        "en": "Accessible UI and inclusive UX for mobile community banking queue booking and mobile unit tracking designed for non-digital-native users.",
+        "th": "ออกแบบ UI ที่อ่านง่ายและ Inclusive UX สำหรับระบบจองคิวและติดตามรถธนาคารชุมชนบนมือถือ เพื่อช่วยให้ผู้ใช้ทุกกลุ่มเข้าถึงบริการได้สะดวก"
+      },
+      "problem": {
+        "en": "Community users who are less accustomed to complex digital apps need clear action labels, straightforward step progression, and live fleet arrival status.",
+        "th": "ผู้ใช้งานในชุมชนที่อาจไม่คุ้นเคยกับแอปซับซ้อนต้องการปุ่มกดที่ชัดเจน ขั้นตอนที่ไม่ซับซ้อน และเห็นเวลาที่รถบริการจะมาถึงได้อย่างแม่นยำ"
+      },
+      "solution": {
+        "en": "Structured dedicated entry points for Queue Booking, Vehicle Tracking, and Booking History alongside map arrival tracking, clean input fields, and time-slot selection.",
+        "th": "จัดระเบียบเมนูหลักสำหรับจองคิว ติดตามรถ และประวัติการจอง พร้อมหน้าแผนที่แสดงเวลาถึงจุดหมาย ฟอร์มกรอกข้อมูลที่ชัดเจน และการเลือกช่วงเวลา"
+      },
+      "highlights": {
+        "en": [
+          "Inclusive UX tailored for non-digital-native community users",
+          "Complete journey from service choice and map stop to slot confirmation",
+          "Reduces waiting friction and travel uncertainty"
+        ],
+        "th": [
+          "ออกแบบ Inclusive UX สำหรับผู้ใช้งานที่อาจไม่ถนัดเทคโนโลยี",
+          "ครอบคลุมขั้นตอนตั้งแต่เลือกบริการ เลือกจุดจอดบนแผนที่ ไปจนถึงยืนยันคิว",
+          "ช่วยลดระยะเวลารอคอยและลดความไม่แน่นอนในการเดินทาง"
+        ]
+      },
+      "tools": [
+        "Figma",
+        "Inclusive UX",
+        "User Flow Design",
+        "Mobile UI"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "Project Folder (Drive)",
+            "th": "โฟลเดอร์ผลงาน (Drive)"
+          },
+          "url": "https://drive.google.com/drive/folders/1TOoYV3T2YuWbqNr8-MWi7Q-BRF3I-SWk?dmr=1&ec=wgc-drive-hero-goto",
+          "primary": true
+        }
+      ],
+      "artworkType": "nexus"
+    },
+    {
+      "id": "mushroom-dashboard",
+      "category": "iot-data",
+      "badgeCategory": {
+        "en": "IoT Dashboard & Hardware",
+        "th": "แดชบอร์ด IoT & ฮาร์ดแวร์"
+      },
+      "title": "Mushroom Cultivation Dashboard",
+      "year": "Nov 2025",
+      "role": {
+        "en": "IoT Developer, System & Dashboard Designer",
+        "th": "นักพัฒนา IoT และออกแบบระบบ/แดชบอร์ด"
+      },
+      "shortDesc": {
+        "en": "Minimalist IoT web dashboard displaying live sensor readings, trend graphs, and automated growth stage modes connected with ESP32, Raspberry Pi 4 (Flask), and MySQL.",
+        "th": "เว็บแดชบอร์ดฟาร์มเห็ดอัจฉริยะ แสดงค่าเซ็นเซอร์เรียลไทม์ กราฟต่อเนื่อง และโหมดควบคุมตามระยะการเติบโต เชื่อมต่อ ESP32, Raspberry Pi 4 (Flask) และ MySQL"
+      },
+      "problem": {
+        "en": "Cultivation stages require distinct environmental targets and continuous logging while automating actuators when thresholds are reached.",
+        "th": "แต่ละระยะของการเพาะเห็ดต้องการค่าสภาพแวดล้อมที่ต่างกัน พร้อมการเก็บข้อมูลต่อเนื่องและการสั่งงานอุปกรณ์อัตโนมัติเมื่อถึงเกณฑ์"
+      },
+      "solution": {
+        "en": "Developed a responsive web interface with HTML, CSS, JavaScript, and PHP integrated with ESP32 sensors, Raspberry Pi 4 (Flask) server, and automated control logic.",
+        "th": "พัฒนาเว็บแดชบอร์ดด้วย HTML, CSS, JavaScript และ PHP เชื่อมต่อกับ ESP32 และ Raspberry Pi 4 (Flask) พร้อมระบบสั่งงานอัตโนมัติและบันทึกข้อมูลลงฐานข้อมูล"
+      },
+      "highlights": {
+        "en": [
+          "Live telemetry for Temperature, Relative Humidity, and CO2 (ppm)",
+          "Stage operating modes: Incubation Period, Pinning Stage, Fruiting Stage",
+          "Continuous trend graphs and automated fan, misting, and light control"
+        ],
+        "th": [
+          "แสดงค่าเซ็นเซอร์แบบเรียลไทม์ ทั้งอุณหภูมิ ความชื้นสัมพัทธ์ และ CO2",
+          "เลือกโหมดการทำงานตามระยะเพาะเห็ดได้สะดวก",
+          "มีกราฟแนวโน้มต่อเนื่องและระบบสั่งงานอุปกรณ์อัตโนมัติ"
+        ]
+      },
+      "tools": [
+        "HTML / CSS / JS",
+        "PHP & MySQL",
+        "ESP32",
+        "Raspberry Pi 4 (Flask)"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "GitHub Repository",
+            "th": "โค้ดบน GitHub"
+          },
+          "url": "https://github.com/Natnaree3010/Mushroom-Cultivation-Dashboard",
+          "primary": true
+        }
+      ],
+      "artworkType": "mushroom"
+    },
+    {
+      "id": "study-buddy-match",
+      "category": "ux-mobile",
+      "badgeCategory": {
+        "en": "Mobile UI & Gamification",
+        "th": "UI แอปมือถือ & เกมมิฟิเคชัน"
+      },
+      "title": "Study Buddy Match",
+      "year": "Jan 2026",
+      "role": {
+        "en": "UI/UX Designer",
+        "th": "นักออกแบบ UI/UX"
+      },
+      "shortDesc": {
+        "en": "Social learning mobile app UI in Figma for matching study partners with shared academic goals, sharing summary sheets, and tracking focus EXP.",
+        "th": "ออกแบบ UI แอปโซเชียลเพื่อการเรียนรู้บน Figma สำหรับจับคู่เพื่อนติวตามเป้าหมายการเรียน แชร์ชีทสรุป และสะสมแต้ม EXP เพื่อสร้างแรงจูงใจ"
+      },
+      "problem": {
+        "en": "Studying alone can feel isolating; learners need an intuitive way to discover study buddies by subject, exchange summary sheets, and track study consistency.",
+        "th": "การอ่านหนังสือคนเดียวอาจทำให้ขาดแรงจูงใจ ผู้เรียนจึงต้องการช่องทางหาเพื่อนติวตามวิชา แชร์ชีทสรุป และเห็นความคืบหน้าของตนเอง"
+      },
+      "solution": {
+        "en": "Designed mobile screens featuring daily study sessions, buddy match scores, study sheet and post feeds, and EXP/streak progress cards.",
+        "th": "ออกแบบหน้าจอมือถือที่มีตารางเรียนประจำวัน เปอร์เซ็นต์จับคู่บัดดี้ ฟีดโพสต์/ชีทสรุป และการ์ดแสดงค่า EXP รวมถึงสถิติการเรียนต่อเนื่อง"
+      },
+      "highlights": {
+        "en": [
+          "Buddy match cards with subject tags and compatibility scores",
+          "Study Posts, Sheets, and Study Group browsing flows",
+          "Gamified Focus Power EXP, Contribution Points, and streak stats"
+        ],
+        "th": [
+          "การ์ดจับคู่บัดดี้พร้อมแท็กวิชาและความเข้ากันได้",
+          "แยกหมวดหมู่ Study Posts, Sheets และ Study Group ชัดเจน",
+          "เพิ่มระบบ Gamification เช่น EXP และสถิติการโฟกัสต่อเนื่อง"
+        ]
+      },
+      "tools": [
+        "Figma",
+        "Mobile UI Design",
+        "Gamified UX",
+        "Information Architecture"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "View in Figma",
+            "th": "ดูต้นแบบใน Figma"
+          },
+          "url": "https://www.figma.com/design/lvNSR900yUyl1zA8WmAiKs/Study-Buddy-Match?t=cAb4y8PdoSGTMT1q-1",
+          "primary": true
+        }
+      ],
+      "artworkType": "studybuddy"
+    },
+    {
+      "id": "bunny-planners",
+      "category": "ux-mobile",
+      "badgeCategory": {
+        "en": "End-to-End Mobile UX/UI",
+        "th": "UX/UI แอปวางแผนชีวิต"
+      },
+      "title": "Bunny Planners — Digital Planner App",
+      "year": "Jan 2026",
+      "role": {
+        "en": "UX/UI Designer",
+        "th": "นักออกแบบ UX/UI"
+      },
+      "shortDesc": {
+        "en": "End-to-end UX/UI design in Figma from wireframes to interactive prototypes for a mobile planner covering To-do list, Diary, Calendar, hydration, and daily vibe.",
+        "th": "ออกแบบ UX/UI แบบครบวงจรบน Figma ตั้งแต่ Wireframe จนถึง Prototype สำหรับแอปวางแผนชีวิต ทั้ง To-do list, Diary, ปฏิทิน การดื่มน้ำ และ Daily Vibe"
+      },
+      "problem": {
+        "en": "Users often abandon heavy planning tools; daily routines, notes, and habit check-ins work better when organized into light, focused flows.",
+        "th": "แอปวางแผนที่ซับซ้อนเกินไปอาจทำให้ใช้งานได้ไม่ต่อเนื่อง การจดภารกิจ บันทึกประจำวัน และเช็กนิสัยจึงควรจัดเป็นโฟลว์ที่เบาและชัดเจน"
+      },
+      "solution": {
+        "en": "Built interactive Figma screens across Home, Add Plan, and Monthly Calendar views with clear visual hierarchy, quick plan entry, and daily habit progress.",
+        "th": "ออกแบบหน้าจอแบบ Interactive บน Figma ทั้งหน้าหลัก หน้าเพิ่มแผนงาน และหน้าปฏิทินรายเดือน พร้อมการเพิ่มแผนงานที่รวดเร็วและการติดตามความคืบหน้า"
+      },
+      "highlights": {
+        "en": [
+          "End-to-end Figma workflow from wireframes to interactive prototype",
+          "Integrates To-do list, Timeline view, Monthly Calendar, and Diary",
+          "Includes daily vibe check-in and hydration / habit counters"
+        ],
+        "th": [
+          "ทำงานครบตั้งแต่ Wireframe สู่ Interactive Prototype บน Figma",
+          "รวมฟีเจอร์ To-do list, Timeline, ปฏิทินรายเดือน และ Diary ไว้ในที่เดียว",
+          "มีส่วนบันทึก Daily Vibe และติดตามการดื่มน้ำ/เป้าหมายรายวัน"
+        ]
+      },
+      "tools": [
+        "Figma (Interactive)",
+        "Wireframing",
+        "Prototyping",
+        "Mobile UX/UI"
+      ],
+      "links": [
+        {
+          "label": {
+            "en": "View in Figma",
+            "th": "ดูต้นแบบใน Figma"
+          },
+          "url": "https://www.figma.com/design/7VZqQhjQEbT6fMjvQstXo8/Bunny-Planners?node-id=0-1&t=emIACy8U17a1Rtyh-1",
+          "primary": true
+        }
+      ],
+      "artworkType": "bunny"
+    }
+  ],
+  "translations": {
+    "en": {
+      "nav_projects": "Projects",
+      "nav_experience": "Experience",
+      "nav_skills": "Skills & Education",
+      "nav_contact": "Contact",
+      "lang_switch": "TH / EN",
+      "btn_resume": "View Resume",
+      "hero_badge": "UX/UI Designer • IoT & Web Developer • KMITL",
+      "hero_title_1": "Thoughtful interfaces for",
+      "hero_title_2": "connected IoT, data & AI systems.",
+      "hero_summary": "Third-year IoT & Information Engineering student at KMITL looking for a UX/UI Design internship. I love turning complex workflows, sensor data, and AI insights into calm, intuitive experiences people genuinely enjoy using.",
+      "hero_cta_primary": "Explore Work",
+      "hero_cta_secondary": "Open CV Summary",
+      "hero_location": "Prawet, Bangkok",
+      "card_role": "UX/UI Designer • IoT & Info Eng.",
+      "card_status": "Internship Ready",
+      "stat_projects": "Featured UX, IoT & AI Works",
+      "stat_intern": "UX/UI Intern • Apr–Jun 2026",
+      "stat_award": "1st Runner-Up • 2025",
+      "stat_gpa": "GPA • KMITL (2024–Present)",
+      "card_focus_label": "Discipline & Craft",
+      "projects_eyebrow": "Selected Case Studies",
+      "projects_title": "UX/UI, IoT & AI Portfolio",
+      "projects_subtitle": "Browse interactive UI previews, UX problem–solution stories, technical stack notes, and links to Figma, GitHub, and live apps.",
+      "filter_all": "All Works",
+      "filter_ux": "UX/UI & Mobile App",
+      "filter_data": "Data & IoT Dashboard",
+      "filter_ai": "Web & AI",
+      "exp_eyebrow": "Experience & Honors",
+      "exp_title": "Internship & Competition Track Record",
+      "intern_badge": "UX/UI Design Intern",
+      "intern_project": "Project: Makro VIP Cool Box App (IoT Tracking & Temp Sensor)",
+      "award1_tag": "First Runner-Up",
+      "award1_desc": "Urban Subsidence Predictive Platform — geo-spatial dashboard combining InSAR, soil, groundwater, and GNN forecasting.",
+      "award2_tag": "Top 26 Finalist",
+      "award2_title": "Integrated Plant Production Innovation in PFAL",
+      "award2_desc": "SME Spectra-Dev Kit recognition for controlled-environment smart cultivation systems.",
+      "skills_eyebrow": "Capabilities & Education",
+      "skills_title": "Skills, Education & Languages",
+      "edu_label": "Education",
+      "edu_degree": "Bachelor of Engineering in IoT and Information Engineering (2024 – Present)",
+      "lang_label": "Languages",
+      "lang_th": "Thai",
+      "lang_th_level": "Native",
+      "lang_en": "English",
+      "cat_design": "Design Tools & UX",
+      "cat_prog": "Programming & Web",
+      "cat_iot": "Engineering & IoT",
+      "contact_eyebrow": "Contact",
+      "contact_title": "Let’s build something clear and meaningful together.",
+      "contact_subtitle": "Whether you’re recruiting for a UX/UI Design internship, collaborating on a product interface, or exploring IoT/web work, feel free to say hello.",
+      "label_phone": "Phone",
+      "label_email": "Email",
+      "label_address": "Location",
+      "btn_copy": "Copy",
+      "form_title": "Send a Note",
+      "form_name": "Your Name",
+      "form_email": "Your Email",
+      "form_topic": "Subject",
+      "topic_intern": "UX/UI Design Internship",
+      "topic_design": "Product / UI Design Collaboration",
+      "topic_web": "Web & IoT Dashboard Inquiry",
+      "form_msg": "Message",
+      "form_submit": "Send Note",
+      "footer_note": "Fluid UX/UI & Engineering Portfolio • Blue, White & Carbon Black"
+    },
+    "th": {
+      "nav_projects": "ผลงาน",
+      "nav_experience": "ประสบการณ์",
+      "nav_skills": "ทักษะ & การศึกษา",
+      "nav_contact": "ติดต่อ",
+      "lang_switch": "EN / TH",
+      "btn_resume": "ดูเรซูเม่",
+      "hero_badge": "UX/UI Designer • IoT & Web Developer • สจล.",
+      "hero_title_1": "ออกแบบอินเทอร์เฟซที่ลื่นไหล",
+      "hero_title_2": "เชื่อมโยงระบบ IoT ข้อมูล และ AI อย่างเป็นธรรมชาติ",
+      "hero_summary": "นักศึกษาชั้นปีที่ 3 สาขาวิศวกรรม IoT และสารสนเทศ สจล. กำลังมองหาโอกาสฝึกงานตำแหน่ง UX/UI Designer ชอบเปลี่ยนเรื่องซับซ้อนอย่างโฟลว์การทำงาน ข้อมูลเซ็นเซอร์ และผลลัพธ์จาก AI ให้กลายเป็นประสบการณ์ที่เข้าใจง่ายและน่าใช้งานจริง",
+      "hero_cta_primary": "สำรวจผลงาน",
+      "hero_cta_secondary": "สรุปเรซูเม่",
+      "hero_location": "ประเวศ กรุงเทพมหานคร",
+      "card_role": "UX/UI Designer • วิศวกรรม IoT และสารสนเทศ",
+      "card_status": "พร้อมฝึกงาน",
+      "stat_projects": "โปรเจกต์ UX, IoT & AI",
+      "stat_intern": "ฝึกงาน UX/UI • เม.ย.–มิ.ย. 2026",
+      "stat_award": "รองชนะเลิศอันดับ 1 • 2025",
+      "stat_gpa": "เกรดเฉลี่ย • สจล. (2024–ปัจจุบัน)",
+      "card_focus_label": "ความเชี่ยวชาญหลัก",
+      "projects_eyebrow": "Case Study & ผลงานเด่น",
+      "projects_title": "ผลงานด้าน UX/UI, IoT และ AI",
+      "projects_subtitle": "กดเลือกดูรายละเอียดแต่ละโปรเจกต์เพื่ออ่านแนวคิดการออกแบบ จุดเด่นของระบบ และลิงก์ Figma, GitHub หรือเว็บจริง",
+      "filter_all": "ทั้งหมด",
+      "filter_ux": "UX/UI & แอปมือถือ",
+      "filter_data": "แดชบอร์ดข้อมูล & IoT",
+      "filter_ai": "เว็บ & AI",
+      "exp_eyebrow": "ประสบการณ์ & รางวัล",
+      "exp_title": "ประสบการณ์ฝึกงานและเวทีการแข่งขัน",
+      "intern_badge": "นักศึกษาฝึกงาน UX/UI Design",
+      "intern_project": "โปรเจกต์: Makro VIP Cool Box App (ระบบติดตาม IoT และเซ็นเซอร์อุณหภูมิ)",
+      "award1_tag": "รองชนะเลิศอันดับ 1",
+      "award1_desc": "ผลงานแพลตฟอร์มพยากรณ์ดินทรุดด้วยโมเดล GNN และข้อมูลดาวเทียม InSAR",
+      "award2_tag": "Top 26 Finalist",
+      "award2_title": "การประกวดนวัตกรรมการผลิตพืชในโรงงานผลิตพืช (PFAL)",
+      "award2_desc": "เข้ารอบสุดท้ายพร้อมรับ SME Spectra-Dev Kit สำหรับพัฒนานวัตกรรมการเพาะปลูกอัจฉริยะ",
+      "skills_eyebrow": "ทักษะ & ประวัติการศึกษา",
+      "skills_title": "ทักษะ การศึกษา และภาษา",
+      "edu_label": "การศึกษา",
+      "edu_degree": "วิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรม IoT และสารสนเทศ (2024 – ปัจจุบัน)",
+      "lang_label": "ทักษะภาษา",
+      "lang_th": "ภาษาไทย",
+      "lang_th_level": "เจ้าของภาษา",
+      "lang_en": "ภาษาอังกฤษ",
+      "cat_design": "เครื่องมือออกแบบ & UX",
+      "cat_prog": "การเขียนโปรแกรม & เว็บ",
+      "cat_iot": "วิศวกรรม & ระบบ IoT",
+      "contact_eyebrow": "ช่องทางการติดต่อ",
+      "contact_title": "มาพูดคุยและสร้างสรรค์ผลงานดีๆ ร่วมกันค่ะ",
+      "contact_subtitle": "เปิดรับโอกาสฝึกงานตำแหน่ง UX/UI Design การทำงานร่วมกันด้าน Product/UI หรือโปรเจกต์เว็บและแดชบอร์ด IoT ทักมาคุยกันได้เลยค่ะ",
+      "label_phone": "โทรศัพท์",
+      "label_email": "อีเมล",
+      "label_address": "ที่อยู่",
+      "btn_copy": "คัดลอก",
+      "form_title": "ส่งข้อความถึงฉัน",
+      "form_name": "ชื่อของคุณ",
+      "form_email": "อีเมลของคุณ",
+      "form_topic": "หัวข้อ",
+      "topic_intern": "ฝึกงานตำแหน่ง UX/UI Design",
+      "topic_design": "ร่วมงานด้าน Product / UI Design",
+      "topic_web": "สอบถามด้านเว็บและแดชบอร์ด IoT",
+      "form_msg": "ข้อความ",
+      "form_submit": "ส่งข้อความ",
+      "footer_note": "พอร์ตโฟลิโอสาย UX/UI & วิศวกรรม • โทนสีน้ำเงิน ขาว และดำคาร์บอน"
+    }
+  },
+  "internBullets": {
+    "en": [
+      "Led end-to-end UX/UI design (Discover–Test), building wireframes and interactive prototypes in Figma.",
+      "Designed Real-Time Dashboard, Data Logger charts/tables, and Upload Log flows to simplify operational UX.",
+      "Created Visual Identity (logo and color system) aligned with IoT context and brand guidelines."
+    ],
+    "th": [
+      "ดูแลงานออกแบบ UX/UI แบบครบวงจร (Discover–Test) สร้าง Wireframe และ Interactive Prototype บน Figma",
+      "ออกแบบ Real-Time Dashboard, ตาราง/กราฟ Data Logger และโฟลว์ Upload Log ให้ใช้งานได้ง่ายและลดความซับซ้อน",
+      "สร้าง Visual Identity (โลโก้และระบบสี) ให้สอดคล้องกับระบบ IoT และ Brand Guidelines"
+    ]
+  }
+}
